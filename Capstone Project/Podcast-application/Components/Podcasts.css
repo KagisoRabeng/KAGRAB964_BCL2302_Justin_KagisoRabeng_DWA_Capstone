@@ -1,0 +1,29 @@
+.Middle-con {
+    display: flex;
+    justify-content: center;
+  }
+
+  .podcast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .podcast-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .podcast-card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h2 {
+    margin-top: 10px;
+  }
+
+  p {
+    margin-top: 5px;
+  }

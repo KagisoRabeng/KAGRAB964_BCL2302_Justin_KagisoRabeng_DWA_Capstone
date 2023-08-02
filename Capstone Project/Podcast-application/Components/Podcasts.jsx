@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "./Podcasts.css"
+
 
 export default function Podcasts() {
   const [podcasts, setPodcasts] = useState([]);
@@ -9,6 +11,12 @@ export default function Podcasts() {
       .then((data) => setPodcasts(data));
   }, []);
 
+  const [ShowDescription, setShowDescription] = useState(true)
+
+  function Show() {
+    setShowDescription (prevShowDescription => !prevShowDescription)
+  }
+
   return (
     <div className="Middle-con">
       <div className="podcast-list">
@@ -16,7 +24,9 @@ export default function Podcasts() {
           <div key={podcast.id} className="podcast-card">
             {podcast.image && <img src={podcast.image} alt={podcast.title} />}
             <h2>{podcast.title}</h2>
-            <p>{podcast.description}</p>
+            <h4>Genre: {podcast.genres}</h4>
+            <h4>Seasons: {podcast.seasons}</h4>
+            <p onClick={Show}>{ShowDescription === true ? `${podcast.description}`  : "Show Description"}</p>
           </div>
         ))}
       </div>
