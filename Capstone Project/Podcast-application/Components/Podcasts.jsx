@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { SlDetails } from '@shoelace-style/shoelace/dist/react';
+import { SlDetails, SlRating } from '@shoelace-style/shoelace/dist/react';
 import "./Podcasts.css"
 
+const genres = [
+  "Personal Growth",
+  "True Crime and Investigative Journalism",
+  "History",
+  "Comedy",
+  "Entertainment",
+  "Business",
+  "Fiction",
+  "News",
+  "Kids and Family",
+];
 
 export default function Podcasts() {
   const [podcasts, setPodcasts] = useState([]);
@@ -12,10 +23,12 @@ export default function Podcasts() {
       .then((data) => setPodcasts(data));
   }, []);
 
-  const [ShowDescription, setShowDescription] = useState(true)
 
-  function Show() {
-    setShowDescription (prevShowDescription => !prevShowDescription)
+  const getGenres = (genreIds) => {
+    if (!Array.isArray(genreIds)) {
+      genreIds = [genreIds];
+    }
+     return genreIds.map((id) => genres[id - 1]).join(", ");
   }
 
   return (
@@ -25,12 +38,13 @@ export default function Podcasts() {
           <div key={podcast.id} className="podcast-card">
             {podcast.image && <img src={podcast.image} alt={podcast.title} />}
             <h2>{podcast.title}</h2>
-            <h4>Genre: {podcast.genres}</h4>
-            <h4>Seasons: {podcast.seasons}</h4>
-            {/* <p onClick={Show}>{ShowDescription === true ? `${podcast.description}`  : "Show Description"}</p> */}
+            <h5>Seasons: {podcast.seasons}</h5>
+            <h6> {getGenres(podcast.genres)} </h6>
+            
             <SlDetails summary="Description">
               {podcast.description}
             </SlDetails>
+
           </div>
         ))}
       </div>
