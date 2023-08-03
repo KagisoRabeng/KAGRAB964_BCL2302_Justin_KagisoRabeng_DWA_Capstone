@@ -26,7 +26,10 @@ export default function Podcasts() {
             <h2>{podcast.title}</h2>
             <h4>Genre: {podcast.genres}</h4>
             <h4>Seasons: {podcast.seasons}</h4>
-            <p onClick={Show}>{ShowDescription === true ? `${podcast.description}`  : "Show Description"}</p>
+            {/* <p onClick={Show}>{ShowDescription === true ? `${podcast.description}`  : "Show Description"}</p> */}
+            <SlDetails summary="Toggle Me">
+              {podcast.description}
+            </SlDetails>
           </div>
         ))}
       </div>

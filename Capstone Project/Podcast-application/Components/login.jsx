@@ -1,20 +1,20 @@
 import React from "react";
 import './login.css'
 
-let login = document.getElementById("log-in")
-let sign = document.getElementById("sign-up")
-let btn = document.getElementById("btn")
+let x = document.getElementById("log-in")
+let y = document.getElementById("sign-up")
+let z = document.getElementById("btn")
 
 function signUp() {
-    login.style.left = "-400px";
-    sign.style.left = "50px";
-    btn.style.left = "110px";
+    x.style.left = "-400px";
+    y.style.left = "50px";
+    z.style.left = "110px";
 }
 
 function log() {
-    login.style.left = "50px";
-    sign.style.left = "450px";
-    btn.style.left = "0px";
+    x.style.left = "50px";
+    y.style.left = "450px";
+    z.style.left = "0px";
 }
 
 export default function Login() {
@@ -26,6 +26,9 @@ export default function Login() {
                     <button type="button" className="toggle-btn" onClick={log}>Log In</button>
                     <button type="button" className="toggle-btn" onClick={signUp}>Sign Up</button>
                 </div>
+            </div>
+            <div className="social"> 
+
             </div>
             <form action="" id="log-in" className="input-group">
                 <input 

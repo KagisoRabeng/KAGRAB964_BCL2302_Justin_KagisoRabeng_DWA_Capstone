@@ -1,15 +1,16 @@
 import React from 'react'
 import Login from '../Components/login'
 import Podcasts from '../Components/Podcasts'
-import PodcastComponent from '../Components/SingleShow'
+import Header from '../Components/Header'
 
 function App() {
 
 
   return (
     <>
-      {/* <Login /> */}
-      < Podcasts /> 
+      <Login />
+      {/* < Header /> */}
+      {/* < Podcasts />  */}
       {/* <PodcastComponent /> */}
     </>
   )
