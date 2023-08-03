@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { SlDetails } from '@shoelace-style/shoelace/dist/react';
 import "./Podcasts.css"
 
 
@@ -27,7 +28,7 @@ export default function Podcasts() {
             <h4>Genre: {podcast.genres}</h4>
             <h4>Seasons: {podcast.seasons}</h4>
             {/* <p onClick={Show}>{ShowDescription === true ? `${podcast.description}`  : "Show Description"}</p> */}
-            <SlDetails summary="Toggle Me">
+            <SlDetails summary="Description">
               {podcast.description}
             </SlDetails>
           </div>

@@ -10,7 +10,7 @@ function App() {
     <>
       {/* <Login /> */}
       < Header />
-      {/* < Podcasts />  */}
+      < Podcasts /> 
       {/* <PodcastComponent /> */}
     </>
   )
