@@ -12,8 +12,8 @@ function App() {
       {/* <Login /> */}
       {/* <Carousel /> */}
       < Header />
-      {/* < Podcasts />  */}
-      <Shows />
+      < Podcasts /> 
+      {/* <Shows /> */}
       {/* <PodcastComponent /> */}
     </>
   )

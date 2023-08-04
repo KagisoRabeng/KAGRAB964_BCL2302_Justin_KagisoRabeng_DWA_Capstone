@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SlDetails } from '@shoelace-style/shoelace/dist/react';
-import "./Podcasts.css"
+import "./Shows.css"
 
 const genres = [
   "Personal Growth",
@@ -32,22 +32,26 @@ export default function Podcasts() {
   }
 
   return (
-    <div className="Middle-con">
-      <div className="podcast-list">
-        {podcasts.map((podcast) => (
-          <div key={podcast.id} className="podcast-card">
-            {podcast.image && <img src={podcast.image} alt={podcast.title} />}
-            <h2>{podcast.title}</h2>
-            <h5>Seasons: {podcast.seasons}</h5>
-            <h6> {getGenres(podcast.genres)} </h6>
-            <p>Last Updated: {podcast.updated}</p>
-            <SlDetails summary="Description">
-              {podcast.description}
-            </SlDetails>
+    <>
+      
 
-          </div>
-        ))}
+      <div className="Middle-con">
+        <div className="podcast-list">
+          {podcasts.map((podcast) => (
+            <div key={podcast.id} className="podcast-card">
+              {podcast.image && <img src={podcast.image} alt={podcast.title} />}
+              <h2>{podcast.title}</h2>
+              <h5>Seasons: {podcast.seasons}</h5>
+              <h6> {getGenres(podcast.genres)} </h6>
+              <p>Last Updated: {podcast.updated}</p>
+              <SlDetails summary="Description">
+                {podcast.description}
+              </SlDetails>
+
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
