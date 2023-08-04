@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SlDetails, SlRating } from '@shoelace-style/shoelace/dist/react';
+import { SlDetails } from '@shoelace-style/shoelace/dist/react';
 import "./Podcasts.css"
 
 const genres = [
@@ -40,7 +40,7 @@ export default function Podcasts() {
             <h2>{podcast.title}</h2>
             <h5>Seasons: {podcast.seasons}</h5>
             <h6> {getGenres(podcast.genres)} </h6>
-            
+            <p>Last Updated: {podcast.updated}</p>
             <SlDetails summary="Description">
               {podcast.description}
             </SlDetails>
