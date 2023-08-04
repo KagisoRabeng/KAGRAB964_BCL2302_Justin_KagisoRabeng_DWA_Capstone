@@ -2,7 +2,7 @@ import React from 'react'
 import Login from '../Components/login'
 import Podcasts from '../Components/Podcasts'
 import Header from '../Components/Header'
-// import Carousel from '../Components/Carousel'
+import Shows from '../Components/Shows'
 
 function App() {
 
@@ -11,8 +11,9 @@ function App() {
     <>
       {/* <Login /> */}
       {/* <Carousel /> */}
-      {/* < Header /> */}
-      < Podcasts /> 
+      < Header />
+      {/* < Podcasts />  */}
+      <Shows />
       {/* <PodcastComponent /> */}
     </>
   )
