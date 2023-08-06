@@ -30,7 +30,7 @@ const Header = ({
   return (
     <header className="app-header">
       <div>
-      <h3 className="PodcastName">LePodcast</h3>
+      <h4 className="PodcastName">GAZII</h4>
       </div>
       {/* Search input */}
       <div className="search-box">

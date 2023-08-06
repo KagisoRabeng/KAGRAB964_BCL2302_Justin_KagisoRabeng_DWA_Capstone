@@ -3,6 +3,7 @@ import Login from '../Components/login'
 import Podcasts from '../Components/Podcasts'
 import Header from '../Components/Header'
 import Shows from '../Components/Shows'
+import './App.css'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 
@@ -10,6 +11,8 @@ function App() {
   
   return (
     <BrowserRouter>
+    <Header />
+    
       <header className="bg-dark">
         <nav className="nav nav-pills flex-row P-2">
           <Link to="/podcasts" className="flex-sm-fill text-sm-center nav-link text-light" href="#">Home</Link>
