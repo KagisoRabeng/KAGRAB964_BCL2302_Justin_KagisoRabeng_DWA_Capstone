@@ -1,0 +1,85 @@
+.app-header {
+    background-color: #e66a17;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    position: fixed;
+  }
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  nav li {
+    margin-right: 15px;
+  }
+  nav a {
+    color: #1c1814;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  .search-container input {
+    padding: 5px 10px;
+    border: 1px solid #1b1a1a;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+  /* Styling for the sort dropdown */
+  .sort-dropdown {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  #sort {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #F0F0F0;
+    color: #635F5F;
+    cursor: pointer;
+  }
+  /* Styling for the genre dropdown */
+  .genre-dropdown{
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  #genre{
+      padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #F0F0F0;
+    color: #333;
+    cursor: pointer;
+  }
+  #searchBtn{
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #F0F0F0;
+    color: #333;
+    cursor: pointer;
+  }
+  #input{
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #F0F0F0;
+    color: #333;
+    cursor: pointer;
+  }
+  .PodcastName{
+    color: #D1D3DB;
+  }

@@ -1,9 +1,53 @@
-.Middle-con {
-    display: flex;
-    justify-content: center;
-  }
-  .card {
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+h2 {
+  text-decoration: underline;
+}
+
+/* Common styles for all devices */
+.seasons {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.seasons img {
+  max-width: 200px;
+  margin-bottom: 10px;
+}
+
+/* Styles for larger devices */
+@media (min-width: 768px) {
+  .season {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
   }
+
+  .seasons img {
+    max-width: 100%;
+  }
+}
+
+/* Styles for iPhone SE or smaller devices */
+@media (max-width: 767px) {
+  .season {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+}
