@@ -30,6 +30,13 @@ h2 {
   margin-bottom: 10px;
 }
 
+.image {
+  display: flex;
+  max-width: 200px;
+  justify-content: center;
+
+}
+
 /* Styles for larger devices */
 @media (min-width: 768px) {
   .season {

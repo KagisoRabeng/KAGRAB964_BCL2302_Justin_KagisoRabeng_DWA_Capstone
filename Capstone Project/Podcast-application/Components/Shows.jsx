@@ -2,7 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { SlDetails, SlRating  } from '@shoelace-style/shoelace/dist/react';
 import './Shows.css'
 
-
+const genres = [
+    "Personal Growth",
+    "True Crime and Investigative Journalism",
+    "History",
+    "Comedy",
+    "Entertainment",
+    "Business",
+    "Fiction",
+    "News",
+    "Kids and Family",
+  ];
 
 const ShowList = () => {
   const [showsData, setShowsData] = useState([]);
@@ -34,7 +44,12 @@ const ShowList = () => {
     fetchShowsData();
   }, []);
 
-  
+  const getGenres = (genreIds) => {
+    if (!Array.isArray(genreIds)) {
+      genreIds = [genreIds];
+    }
+     return genreIds.map((id) => genres[id - 1]).join(", ");
+  }
 
   return (
     <div className='container'>
@@ -44,6 +59,17 @@ const ShowList = () => {
                     key={show.id} 
                     className="card">
                     <h2>{show.title}</h2>
+                    <img 
+                    className='image'
+                    src={show.image} 
+                    alt={show.title} 
+                    />
+                    <p>Genres: {getGenres(show.genres)}</p>
+                    <p>Last Updated: {new Date(show.updated).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                    })}</p>
 
                     <SlDetails summary="Description">
                         {show.description}
@@ -51,11 +77,12 @@ const ShowList = () => {
                   
                     {show.seasons.map((season) => (
                         <div key={season.seasonNumber} className='seasons'>
+                           
+                            <SlDetails summary={season.title}>
                             <img 
                             src={season.image} 
                             alt={`Season ${season.season}`} 
                             style={{ maxWidth: '200px' }} />
-                            <SlDetails summary={season.title}>
                                 <div className='season'>
                                     {season.episodes.map((episode, index) => (
                                         <div key={index}>
@@ -70,13 +97,7 @@ const ShowList = () => {
                             
                         </div>
                     ))}
-                    <p>Genres: {show.genres.join(', ')}</p>
-                    <img src={show.image} alt={show.title} style={{ maxWidth: '200px' }} />
-                    <p>Last Updated: {new Date(show.updated).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                    })}</p>
+                   
                 </div>
             ))}
         </div>

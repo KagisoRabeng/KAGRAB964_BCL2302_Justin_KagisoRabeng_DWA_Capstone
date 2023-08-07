@@ -21,6 +21,7 @@ const Header = ({
     9: "Kids and Family",
   };
 
+  
   const handleSearchInputChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
