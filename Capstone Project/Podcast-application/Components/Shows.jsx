@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SlDetails, SlRating  } from '@shoelace-style/shoelace/dist/react';
+import { SlDetails } from '@shoelace-style/shoelace/dist/react';
 import './Shows.css'
 
 const genres = [
@@ -25,23 +25,23 @@ const ShowList = () => {
 
         // Fetch episodes for each show and update the state with complete data
         const completeDataPromises = data.map(async (show) => {
-          const episodesResponse = await fetch(`https://podcast-api.netlify.app/id/${show.id}`);
-          const episodesData = await episodesResponse.json();
+        const episodesResponse = await fetch(`https://podcast-api.netlify.app/id/${show.id}`);
+        const episodesData = await episodesResponse.json();
 
           return {
-            ...show,
+            ...show, 
             seasons: episodesData.seasons,
           };
-        });
+        }); {/* Spread the properties of the 'show' object */}
 
-        const completeData = await Promise.all(completeDataPromises);
-        setShowsData(completeData);
+        const completeData = await Promise.all(completeDataPromises); {/*After creating an array of promises, waits for all the promises to resolve  */}
+        setShowsData(completeData); {/*Update the state with the complete show data */}
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
-    fetchShowsData();
+    fetchShowsData(); {/* Call the fetchShowsData function when the component mounts */}
   }, []);
 
   const getGenres = (genreIds) => {
@@ -74,7 +74,8 @@ const ShowList = () => {
                     <SlDetails summary="Description">
                         {show.description}
                     </SlDetails>
-                  
+                      
+                    <SlDetails summary="Seasons">
                     {show.seasons.map((season) => (
                         <div key={season.seasonNumber} className='seasons'>
                            
@@ -87,8 +88,12 @@ const ShowList = () => {
                                     {season.episodes.map((episode, index) => (
                                         <div key={index}>
                                             <SlDetails summary={`${episode.episode}. ${episode.title}`}>
-                                                
                                                 {episode.description}
+                                                <SlDetails summary="Play Episode">
+                                                <audio controls>
+                                                <source src={episode.file}/>
+                                                </audio>
+                                                </SlDetails>
                                             </SlDetails>
                                         </div>
                                     ))} 
@@ -97,6 +102,9 @@ const ShowList = () => {
                             
                         </div>
                     ))}
+                    </SlDetails>
+                  
+                   
                    
                 </div>
             ))}

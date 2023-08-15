@@ -1,29 +1,90 @@
+/* Styles for Middle-con */
 .Middle-con {
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
 
-  .podcast-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
+/* Styles for carousel-container */
+.carousel-container {
+  /* Add your carousel styles here */
+}
 
-  .podcast-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-  }
+/* Styles for sort-and-search-container */
+.sort-and-search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
-  .podcast-card img {
-    max-width: 100%;
-    height: auto;
-  }
+/* Styles for sort-button */
+.sort-button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  background-color: #ccc;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
 
-  h2 {
-    margin-top: 10px;
-  }
+.sort-button.active {
+  background-color: #66b3ff;
+  color: white;
+}
 
-  p {
-    margin-top: 5px;
-  }
+/* Styles for search-input */
+.search-input {
+  padding: 10px;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+/* Styles for podcast-list */
+.podcast-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+/* Styles for loading-message */
+.loading-message {
+  text-align: center;
+}
+
+/* Styles for podcast-card */
+.podcast-card {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.podcast-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Styles for show-detail-container */
+.show-detail-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Styles for showImg */
+.showImg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Styles for image-- */
+.image-- {
+  margin-top: 10px;
+}
+
+/* Styles for audio controls */
+audio {
+  width: 100%;
+  margin-top: 10px;
+}

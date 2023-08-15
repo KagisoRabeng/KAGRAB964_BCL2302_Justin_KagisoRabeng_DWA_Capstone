@@ -1,0 +1,24 @@
+/* Style for individual carousel slides */
+.carousel-slide {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    position: relative;
+  }
+  
+  /* Style for the carousel slide image */
+  .carousel-slide img {
+    max-width: 20%;
+    max-height: 20%; /* Ensure the image doesn't overflow */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+ /* Style for the entire carousel container */
+  .carousel-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #98c3d7   ;
+  }

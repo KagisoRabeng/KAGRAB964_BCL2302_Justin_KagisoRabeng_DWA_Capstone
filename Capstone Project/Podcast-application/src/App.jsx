@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
 import Login from '../Components/login'
-import Podcasts from '../Components/Podcasts'
+import Podcast from '../Components/Podcasts'
 import Header from '../Components/Header'
 import Shows from '../Components/Shows'
 import './App.css'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 
+
 function App() {
   
   return (
     <BrowserRouter>
-    <Header />
+    {/* <Header /> */}
     
       <header className="bg-dark">
         <nav className="nav nav-pills flex-row P-2">
@@ -21,9 +21,9 @@ function App() {
       </header>
 
       <Routes>
-        <Route path="/" element={<Podcasts />} />
+        <Route path="/" element={<Podcast />} />
         <Route path="/shows" element={<Shows />} />
-        <Route path="/podcasts" element={<Podcasts />} />
+        <Route path="/podcasts" element={<Podcast />} />
 
       </Routes>
     </BrowserRouter>  
