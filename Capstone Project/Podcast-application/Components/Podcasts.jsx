@@ -4,6 +4,7 @@ import "../Components/Carousel.css";
 import { SlDetails, SlSpinner } from "@shoelace-style/shoelace/dist/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import supabase from "../src/supabase";
 
 const genres = [
   "Personal Growth",
@@ -236,6 +237,17 @@ const Podcast = ({ selectedGenre }) => {
                             <h4>{episode.name}</h4>
                             <p>{episode.title}</p>
                             <p>{episode.description}</p>
+                            <button 
+                              onClick={() => {
+                                const addFavourite = async () => {
+                                  const {data, error} = await supabase
+                                    .from("favourites")
+                                    .insert({
+                                      title:"added"
+                                    })
+                                }
+                              }}
+                            >Add to favourites</button>
                             <audio controls>
                               <source src={episode.file} />
                             </audio>
