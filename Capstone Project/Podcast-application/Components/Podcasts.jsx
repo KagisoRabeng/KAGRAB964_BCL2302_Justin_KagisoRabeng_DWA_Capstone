@@ -246,6 +246,7 @@ const Podcast = ({ selectedGenre }) => {
                                       title:"added"
                                     })
                                 }
+                                addFavourite()
                               }}
                             >Add to favourites</button>
                             <audio controls>
