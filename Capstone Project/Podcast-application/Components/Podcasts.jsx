@@ -30,6 +30,7 @@ const Podcast = ({ selectedGenre }) => {
   const [selectedShow, setSelectedShow] = useState(null);
   const [selectedSeason, setSelectedSeason] = useState(null);
   const BASE_URL = "https://podcast-api.netlify.app";
+
   const fetchShowDetails = async (showId) => {
     try {
       const response = await fetch(`${BASE_URL}/id/${showId}`);
@@ -41,6 +42,8 @@ const Podcast = ({ selectedGenre }) => {
       throw new Error("Error fetching show details:", error);
     }
   };
+
+
   useEffect(() => {
     setIsLoading(true);
     fetch("https://podcast-api.netlify.app/shows")
@@ -50,6 +53,8 @@ const Podcast = ({ selectedGenre }) => {
         setIsLoading(false);
       });
   }, []);
+
+
   useEffect(() => {
     setIsSorting(true);
     const sorted = [...podcasts];
@@ -62,14 +67,20 @@ const Podcast = ({ selectedGenre }) => {
         return titleB.localeCompare(titleA);
       }
     });
+
+
     const filteredPodcasts = selectedGenre
       ? sorted.filter((podcast) =>
           podcast.genres.includes(parseInt(selectedGenre))
         )
       : sorted;
-    setSortedPodcasts(filteredPodcasts);
+      const searchFilteredPodcasts = filteredPodcasts.filter((podcast) =>
+      podcast.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setSortedPodcasts(searchFilteredPodcasts);
     setIsSorting(false);
-  }, [podcasts, sortOrder, selectedGenre]);
+  }, [podcasts, sortOrder, selectedGenre, searchQuery]);
+
   useEffect(() => {
     setIsSorting(true);
     const sorted = [...podcasts];
@@ -82,20 +93,25 @@ const Podcast = ({ selectedGenre }) => {
         return timeB - timeA;
       }
     });
+
     const filteredPodcasts = selectedGenre
       ? sorted.filter((podcast) =>
           podcast.genres.includes(parseInt(selectedGenre))
         )
       : sorted;
+
+      
     setSortedPodcasts(filteredPodcasts);
     setIsSorting(false);
   }, [podcasts, lastUpdatedSortOrder, selectedGenre]);
+
   const getGenres = (genreIds) => {
     if (!Array.isArray(genreIds)) {
       genreIds = [genreIds];
     }
     return genreIds.map((id) => genres[id - 1]).join(",");
   };
+
   const handleShowClick = async (show) => {
     try {
       const showDetails = await fetchShowDetails(show.id);
@@ -106,10 +122,29 @@ const Podcast = ({ selectedGenre }) => {
       console.error("Error loading show details:", error);
     }
   };
+
   const handleSeasonClick = (seasonNumber) => {
     setSelectedSeason(seasonNumber);
   };
+
+  
+
   return (
+    <>
+      <div className="carousel-container">
+            <h3>You Might Be Interested In...</h3>
+            <Carousel showArrows={false} infiniteLoop={true} autoPlay={true}>
+              {podcasts.map((podcast) => (
+                <div className="carousel-slide" key={podcast.id}>
+                  <img
+                    src={podcast.image}
+                    alt={`Podcast - ${podcast.title}`}
+                  />
+                </div>
+              ))}
+            </Carousel>
+          </div>
+
     <div className="Middle-con">
       {view === "showList" ? (
         <>
@@ -217,7 +252,7 @@ const Podcast = ({ selectedGenre }) => {
                       {season.episodes.map((episode) => (
                         <Fragment key={episode.id}>
                           <h4>{episode.name}</h4>
-                          <li>{episode.title}</li>
+                          <p>{episode.title}</p>
                           <p>{episode.description}</p>
                           <audio controls>
                             <source src={episode.file} />
@@ -232,6 +267,8 @@ const Podcast = ({ selectedGenre }) => {
         </div>
       )}
     </div>
+    </>
+    
   );
 };
 export default Podcast;

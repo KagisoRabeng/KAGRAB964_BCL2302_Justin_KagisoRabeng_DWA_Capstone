@@ -91,6 +91,7 @@ const ShowList = () => {
                            
                             <SlDetails summary={season.title}>
                             <img 
+                            className='season-img'
                             src={season.image} 
                             alt={`Season ${season.season}`} 
                             style={{ maxWidth: '200px' }} />
@@ -98,12 +99,13 @@ const ShowList = () => {
                                     {season.episodes.map((episode, index) => (
                                         <div key={index}>
                                             <SlDetails summary={`${episode.episode}. ${episode.title}`}>
+          
+                                              <SlDetails summary="Episode Description">
                                                 {episode.description}
-                                                <SlDetails summary="Play Episode">
+                                              </SlDetails>
                                                 <audio controls>
                                                 <source src={episode.file}/>
                                                 </audio>
-                                                </SlDetails>
                                             </SlDetails>
                                         </div>
                                     ))} 
