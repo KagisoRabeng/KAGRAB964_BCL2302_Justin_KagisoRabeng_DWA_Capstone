@@ -17,12 +17,13 @@ function App() {
         <nav className="nav nav-pills flex-row P-2">
           <Link to="/podcasts" className="flex-sm-fill text-sm-center nav-link text-light" href="#">Home</Link>
           <Link to="/shows" className="flex-sm-fill text-sm-center nav-link text-light" href="#">Shows</Link>
+          <Link to="/shows" className="flex-sm-fill text-sm-center nav-link text-light" href="#">Favourites</Link>
         </nav>
       </header>
 
       <Routes>
         <Route path="/" element={<Podcast />} />
-        <Route path="/shows" element={<Shows />} />
+        {/* <Route path="/shows" element={<Shows />} /> */}
         <Route path="/podcasts" element={<Podcast />} />
 
       </Routes>

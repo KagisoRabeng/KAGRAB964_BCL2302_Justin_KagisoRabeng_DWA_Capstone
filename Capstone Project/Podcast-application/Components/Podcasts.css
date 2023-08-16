@@ -6,11 +6,6 @@
   padding: 20px;
 }
 
-/* Styles for carousel-container */
-.carousel-container {
-  /* Add your carousel styles here */
-}
-
 /* Styles for sort-and-search-container */
 .sort-and-search-container {
   display: flex;
@@ -31,8 +26,18 @@
 }
 
 .sort-button.active {
-  background-color: #66b3ff;
+  background-color: #205285;
   color: white;
+}
+
+.button {
+  background-color: #0b7c77; 
+  color: white; 
+  border: none; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-size: 16px; 
 }
 
 /* Styles for search-input */
