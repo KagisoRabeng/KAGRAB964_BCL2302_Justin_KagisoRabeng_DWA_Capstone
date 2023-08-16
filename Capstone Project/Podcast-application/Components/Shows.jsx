@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SlDetails } from '@shoelace-style/shoelace/dist/react';
+import { SlDetails,  } from '@shoelace-style/shoelace/dist/react';
 import './Shows.css'
 
 const genres = [
@@ -16,6 +16,7 @@ const genres = [
 
 const ShowList = () => {
   const [showsData, setShowsData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchShowsData = async () => {
@@ -35,9 +36,11 @@ const ShowList = () => {
         }); {/* Spread the properties of the 'show' object */}
 
         const completeData = await Promise.all(completeDataPromises); {/*After creating an array of promises, waits for all the promises to resolve  */}
-        setShowsData(completeData); {/*Update the state with the complete show data */}
+        setShowsData(completeData);
+        setLoading(false); {/*Update the state with the complete show data */}
       } catch (error) {
         console.error('Error fetching data:', error);
+        setLoading(false);
       }
     };
 
@@ -53,6 +56,13 @@ const ShowList = () => {
 
   return (
     <div className='container'>
+      {loading ? (
+        <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>// Display a loading message or spinner while loading
+      ) : (
         <div className='list'>
                 {showsData.map((show) => (
                 <div 
@@ -110,7 +120,7 @@ const ShowList = () => {
             ))}
         </div>
       
-    
+      )}
     </div>
   );
 };

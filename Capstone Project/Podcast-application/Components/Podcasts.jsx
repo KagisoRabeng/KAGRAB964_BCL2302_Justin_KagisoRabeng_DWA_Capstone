@@ -157,7 +157,11 @@ const Podcast = ({ selectedGenre }) => {
           </button>
           <div className="podcast-list">
             {isLoading ? (
-              <p className="loading-message">Loading podcasts...</p>
+             <div class="text-center">
+             <div class="spinner-border" role="status">
+               <span class="visually-hidden">Loading...</span>
+             </div>
+           </div>
             ) : (
               sortedPodcasts.map((podcast) => (
                 <div key={podcast.id} className="podcast-card">
