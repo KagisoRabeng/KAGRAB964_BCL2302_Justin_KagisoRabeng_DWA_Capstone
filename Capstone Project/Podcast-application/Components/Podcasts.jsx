@@ -243,7 +243,10 @@ const Podcast = ({ selectedGenre }) => {
                                   const {data, error} = await supabase
                                     .from("favourites")
                                     .insert({
-                                      title:"added"
+                                      title:episode.title,
+                                      image: season.image,
+                                      show: selectedShow.title,
+                                      audio: episode.file
                                     })
                                 }
                                 addFavourite()
