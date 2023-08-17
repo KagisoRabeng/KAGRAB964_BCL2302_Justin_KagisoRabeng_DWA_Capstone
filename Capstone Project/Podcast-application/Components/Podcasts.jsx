@@ -6,6 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import supabase from "../src/supabase";
 
+//List of available genres
 const genres = [
   "Personal Growth",
   "True Crime and Investigative Journalism",
@@ -19,6 +20,7 @@ const genres = [
 ];
 
 const Podcast = ({ selectedGenre }) => {
+  //State variables
   const [podcasts, setPodcasts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,10 +33,12 @@ const Podcast = ({ selectedGenre }) => {
   const [selectedSeason, setSelectedSeason] = useState(null);
   const BASE_URL = "https://podcast-api.netlify.app";
 
+  //Function to fetch shows by their specific IDs
   const fetchShowDetails = async (showId) => {
     try {
       const response = await fetch(`${BASE_URL}/id/${showId}`);
       const data = await response.json();
+
       // Make sure seasons property exists and is an array
       data.seasons = data.seasons || [];
       return data;
@@ -43,6 +47,7 @@ const Podcast = ({ selectedGenre }) => {
     }
   };
 
+  //Fetch the list of podcasts on component mount
   useEffect(() => {
     setIsLoading(true);
     fetch("https://podcast-api.netlify.app/shows")
@@ -53,6 +58,7 @@ const Podcast = ({ selectedGenre }) => {
       });
   }, []);
 
+  //Sort and filter podcasts based on the title and genre
   useEffect(() => {
     setIsSorting(true);
     const sorted = [...podcasts];
@@ -74,10 +80,12 @@ const Podcast = ({ selectedGenre }) => {
     const searchFilteredPodcasts = filteredPodcasts.filter((podcast) =>
       podcast.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
     setSortedPodcasts(searchFilteredPodcasts);
     setIsSorting(false);
   }, [podcasts, sortOrder, selectedGenre, searchQuery]);
 
+  //Sort podcasts based on last updated and filter by genre
   useEffect(() => {
     setIsSorting(true);
     const sorted = [...podcasts];
@@ -101,6 +109,7 @@ const Podcast = ({ selectedGenre }) => {
     setIsSorting(false);
   }, [podcasts, lastUpdatedSortOrder, selectedGenre]);
 
+  //Get the genres based on their IDs
   const getGenres = (genreIds) => {
     if (!Array.isArray(genreIds)) {
       genreIds = [genreIds];
@@ -108,21 +117,25 @@ const Podcast = ({ selectedGenre }) => {
     return genreIds.map((id) => genres[id - 1]).join(",");
   };
 
+  //Handle click on a show
   const handleShowClick = async (show) => {
     try {
       const showDetails = await fetchShowDetails(show.id);
       setSelectedShow(showDetails);
-      setSelectedSeason(null); // Add this line to reset selectedSeason
+      setSelectedSeason(null); 
       setView("showDetail");
     } catch (error) {
       console.error("Error loading show details:", error);
     }
   };
 
+  // Handle click on a specific season
   const handleSeasonClick = (seasonNumber) => {
     setSelectedSeason(seasonNumber);
   };
 
+
+  //JSX returned by the Podcast component
   return (
     <>
       <div className="carousel-container">
@@ -219,18 +232,19 @@ const Podcast = ({ selectedGenre }) => {
               <h2>{selectedShow.title}</h2>
               {selectedShow.seasons &&
                 selectedShow.seasons.map((season) => (
-                  <div key={season.number}>
-                    <h3>Season {season.number}</h3>
+                  <div key={season.seasonNumber}>
+                    <h3>Season {season.seasonNumber}</h3>
                     <div className="image--">
                       <img
                         className="showImg"
                         src={season.image}
-                        alt={`Season ${season.number}`}
+                        alt={`Season ${season.seasonNumber}`}
                       />
                       <div>{season.episodes.length} Episodes</div>
-                      <button className="button" onClick={() => handleSeasonClick(season.number)}>View Episodes</button>
+                      <button className="button" onClick={() => handleSeasonClick(season.seasonNumber)}>View Episodes</button>
                     </div>
-                    {selectedSeason === season.number && (
+                    {selectedSeason === season.seasonNumber && (
+                      
                       <ul>
                         {season.episodes.map((episode) => (
                           <Fragment key={episode.id}>
@@ -257,6 +271,7 @@ const Podcast = ({ selectedGenre }) => {
                             </audio>
                           </Fragment>
                         ))}
+                      
                       </ul>
                     )}
                   </div>

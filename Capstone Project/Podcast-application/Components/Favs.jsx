@@ -3,9 +3,13 @@ import supabase from "../src/supabase"
 
 export default function(){
 
+    //State variables to hold favourite data and loading state
     const [ favsData, setFavsData] = useState([])
     const [ favsDataStore, setFavsDataStore] = useState(null)
-useEffect(() => {
+    const [isLoading, setIsLoading] = useState(true);
+
+//Fetch favourite data from supabase API on component mount
+    useEffect(() => {
     const getFavs = async ()=> {
         const { data, error } = await supabase
             .from('favourites')
@@ -15,24 +19,25 @@ useEffect(() => {
                 console.error(error)
             }else{
                 setFavsData(data)
+                setIsLoading(false);
             }
     }
-        getFavs()
+        getFavs();
         
-    })
+    }, []);
 
+    //Update data store whenever favsData changes
     useEffect(() => {
         favorites()
-    },[favsData])
+    },[favsData]);
 
-
+//Render favourite items based on favsData
     function favorites(){
         if(favsData){
             const favs = favsData.map((item) => {
 
                 return (
-                    <>
-                    
+                    <div key={item.id}>
                         <h3>{item.title}</h3>
                         <img src={item.image} style={{ width:"20%"}}/>
                         <p>{item.show}</p>
@@ -40,8 +45,7 @@ useEffect(() => {
                         <audio controls>
                               <source src={item.audio} />
                         </audio>
-                    
-                    </>
+                    </div>
                 )
             }) 
             setFavsDataStore(favs)
@@ -51,7 +55,15 @@ useEffect(() => {
     
     return(
         <>
-            { favsDataStore }
+            {isLoading ? ( // Display loading message or spinner while loading
+                <div class="text-center">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            ) : (
+                favsDataStore
+            )}
         </>
     )
 }
