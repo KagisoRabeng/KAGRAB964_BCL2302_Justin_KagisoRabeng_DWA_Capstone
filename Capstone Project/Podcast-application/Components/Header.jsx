@@ -102,6 +102,7 @@ useEffect(() => {
           onChange={handleSearchChange} // Handle search input change
         />
       </div>
+      
       {/* Sorting dropdown */}
       <div className="sort-dropdown">
       <select value={sortOption} onChange={handleSortChange}>
@@ -111,6 +112,7 @@ useEffect(() => {
           <option value="descDate">Sort Descending by Date</option>
         </select>
       </div>
+
       {/* Genre selection dropdown */}
       <div className="genre-dropdown">
         <select id="genre" value={selectedGenre} onChange={handleGenreChange}>
