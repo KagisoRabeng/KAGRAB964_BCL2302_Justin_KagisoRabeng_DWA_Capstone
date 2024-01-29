@@ -1,7 +1,19 @@
+/**
+ * React component for displaying a header with search, sorting, and genre filtering options.
+ * Fetches podcast data from an external API and renders the list of podcasts.
+ * Allows users to search, sort, and filter podcasts based on title, genre, and update date.
+ *
+ * @param {function} onPodcastClick - Callback function triggered when a podcast is clicked.
+ * @param {object} selectedPodcast - Currently selected podcast object.
+ */
+
 import React, { useState } from "react";
 import axios from 'axios';
 import "./Header.css";
 
+/**
+ * Component for rendering the header with search, sorting, and filtering options for podcasts.
+ */
 const Header = ({ onPodcastClick, selectedPodcast }) => {
 // State variables
 const [showPodcast, setPodcast] = useState([]);
@@ -102,7 +114,7 @@ useEffect(() => {
           onChange={handleSearchChange} // Handle search input change
         />
       </div>
-      
+
       {/* Sorting dropdown */}
       <div className="sort-dropdown">
       <select value={sortOption} onChange={handleSortChange}>
