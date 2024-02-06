@@ -11,11 +11,11 @@ import './login.css'
 //     z.style.left = "110px";
 // }
 
-function log() {
-    x.style.left = "50px";
-    y.style.left = "450px";
-    z.style.left = "0px";
-}
+// function log() {
+//     x.style.left = "50px";
+//     y.style.left = "450px";
+//     z.style.left = "0px";
+// }
 
 export default function Login() {
     return (
