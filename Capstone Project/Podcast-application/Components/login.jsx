@@ -1,9 +1,9 @@
 import React from "react";
 import './login.css'
 
-let x = document.getElementById("log-in")
-let y = document.getElementById("sign-up")
-let z = document.getElementById("btn")
+// let x = document.getElementById("log-in")
+// let y = document.getElementById("sign-up")
+// let z = document.getElementById("btn")
 
 // function signUp() {
 //     x.style.left = "-400px";
