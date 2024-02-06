@@ -5,11 +5,11 @@ let x = document.getElementById("log-in")
 let y = document.getElementById("sign-up")
 let z = document.getElementById("btn")
 
-function signUp() {
-    x.style.left = "-400px";
-    y.style.left = "50px";
-    z.style.left = "110px";
-}
+// function signUp() {
+//     x.style.left = "-400px";
+//     y.style.left = "50px";
+//     z.style.left = "110px";
+// }
 
 function log() {
     x.style.left = "50px";
