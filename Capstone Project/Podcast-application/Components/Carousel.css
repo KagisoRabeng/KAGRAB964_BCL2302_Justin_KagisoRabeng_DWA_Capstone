@@ -1,10 +1,13 @@
 /* Style for individual carousel slides */
+
+
 .carousel-slide {
     display: flex; /* Use flexbox */
     align-items: center; /* Vertically center the content */
-    justify-content: center; /* Horizontally center the content */
+    justify-content: center; 
     position: relative;
   }
+  
   
   /* Style for the carousel slide image */
   .carousel-slide img {
